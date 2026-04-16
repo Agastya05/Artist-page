@@ -1,0 +1,616 @@
+/* Artist Billboard / Spotlight Section */
+
+.artist-billboard-section {
+  width: 100%;
+}
+
+.artist-billboard {
+  padding: 40px 32px;
+  margin: 32px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.billboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+}
+
+/* Background Image */
+.billboard-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Overlay for readability */
+.billboard-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(253, 251, 247, 0.85) 0%,
+    rgba(253, 251, 247, 0.75) 50%,
+    rgba(253, 251, 247, 0.65) 100%
+  );
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+body.dark .billboard-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.9) 0%,
+    rgba(26, 26, 26, 0.8) 50%,
+    rgba(26, 26, 26, 0.7) 100%
+  );
+}
+
+/* Content */
+.billboard-content {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+  padding: 48px;
+}
+
+/* Left Section - Avatar */
+.billboard-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-width: 240px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-glow {
+  position: absolute;
+  inset: -12px;
+  background: radial-gradient(
+    circle,
+    var(--gold-light) 0%,
+    var(--gold-muted) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+.billboard-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.2);
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -8px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.seller-badge {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--text-rich);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.25);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+body.dark .seller-badge {
+  background: linear-gradient(135deg, var(--accent-light), #c49a1a);
+  color: #0f0f0f;
+  box-shadow: 0 4px 12px rgba(197, 164, 109, 0.3);
+}
+
+/* Right Section - Information */
+.billboard-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.specialty-badge {
+  display: inline-block;
+  background: var(--peach);
+  color: var(--text-rich);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+body.dark .specialty-badge {
+  background: rgba(197, 164, 109, 0.15);
+  color: var(--accent-light);
+}
+
+.billboard-name {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-rich);
+  margin: 0;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+body.dark .billboard-name {
+  color: var(--text-primary);
+}
+
+.billboard-tagline {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: var(--gold);
+  font-style: italic;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+body.dark .billboard-tagline {
+  color: var(--accent-light);
+}
+
+.billboard-bio {
+  font-size: 16px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+  transition: color 0.3s ease;
+}
+
+body.dark .billboard-bio {
+  color: var(--text-muted);
+}
+
+/* Stats Section */
+.billboard-stats {
+  display: flex;
+  gap: 40px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(201, 162, 39, 0.3);
+  margin-top: 20px;
+  transition: border-color 0.3s ease;
+}
+
+body.dark .billboard-stats {
+  border-top-color: rgba(197, 164, 109, 0.2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-rich);
+  transition: color 0.3s ease;
+}
+
+body.dark .stat-value {
+  color: var(--text-primary);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+body.dark .stat-label {
+  color: var(--text-muted);
+}
+
+/* Navigation Arrows */
+.billboard-nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: white;
+  color: var(--gold);
+  font-size: 32px;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.billboard-nav-btn:hover {
+  background: var(--gold);
+  color: var(--text-rich);
+  box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3);
+  transform: scale(1.08);
+}
+
+.billboard-nav-btn.prev {
+  order: -1;
+}
+
+.billboard-nav-btn.next {
+  order: 1;
+}
+
+/* Artist Carousel Navigation */
+.artist-carousel-nav {
+  padding: 24px 32px;
+  background: transparent;
+  border-radius: 12px;
+  margin: 0 auto 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-scroll-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  overflow-x: auto;
+  padding: 8px 0;
+  scroll-behavior: smooth;
+}
+
+.nav-scroll-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.nav-scroll-container::-webkit-scrollbar-track {
+  background: rgba(201, 162, 39, 0.1);
+  border-radius: 2px;
+}
+
+.nav-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.nav-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+.artist-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  min-width: 80px;
+}
+
+.artist-nav-item:hover {
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.artist-nav-item.active {
+  background: rgba(201, 162, 39, 0.15);
+}
+
+.nav-item-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.artist-nav-item:hover .nav-item-image {
+  border-color: var(--gold-light);
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.2);
+}
+
+.artist-nav-item.active .nav-item-image {
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.35);
+}
+
+.nav-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .billboard-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px;
+  }
+
+  .billboard-left {
+    justify-content: center;
+  }
+
+  .billboard-right {
+    text-align: center;
+  }
+
+  .billboard-stats {
+    justify-content: center;
+  }
+
+  .billboard-name {
+    font-size: 40px;
+  }
+
+  .specialty-badge {
+    margin: 0 auto;
+  }
+
+  .billboard-nav-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+  }
+
+  .artist-carousel-nav {
+    padding: 20px 24px;
+    margin: 0 auto 24px;
+  }
+
+  .artist-nav-item {
+    min-width: 72px;
+  }
+
+  .nav-item-image {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .artist-billboard {
+    padding: 32px 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .billboard-nav-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+
+  .billboard-nav-btn.prev {
+    order: -2;
+  }
+
+  .billboard-nav-btn.next {
+    order: 2;
+  }
+
+  .billboard-container {
+    min-height: 400px;
+    border-radius: 12px;
+    order: -1;
+    flex: 1 1 100%;
+  }
+
+  .billboard-content {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  .avatar-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+
+  .billboard-avatar {
+    width: 160px;
+    height: 160px;
+  }
+
+  .billboard-name {
+    font-size: 32px;
+  }
+
+  .billboard-tagline {
+    font-size: 18px;
+  }
+
+  .billboard-bio {
+    font-size: 15px;
+  }
+
+  .billboard-stats {
+    gap: 32px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .artist-carousel-nav {
+    padding: 16px 20px;
+    margin: 0 auto 20px;
+  }
+
+  .artist-nav-item {
+    min-width: 64px;
+    gap: 6px;
+  }
+
+  .nav-item-image {
+    width: 52px;
+    height: 52px;
+  }
+
+  .artist-nav-item-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-billboard {
+    padding: 24px 12px;
+    margin: 16px 0;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .billboard-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    position: absolute;
+  }
+
+  .billboard-nav-btn.prev {
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    order: unset;
+  }
+
+  .billboard-nav-btn.next {
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    order: unset;
+  }
+
+  .billboard-container {
+    min-height: 320px;
+    border-radius: 8px;
+    position: relative;
+    margin: 0 12px;
+  }
+
+  .billboard-content {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+
+  .avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .billboard-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .billboard-name {
+    font-size: 24px;
+  }
+
+  .billboard-tagline {
+    font-size: 16px;
+  }
+
+  .billboard-bio {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .billboard-stats {
+    gap: 20px;
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .artist-carousel-nav {
+    padding: 12px 16px;
+    margin: 0 auto 16px;
+  }
+
+  .nav-scroll-container {
+    gap: 12px;
+  }
+
+  .artist-nav-item {
+    min-width: 56px;
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .nav-item-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .artist-nav-item-name {
+    font-size: 11px;
+  }
+}
